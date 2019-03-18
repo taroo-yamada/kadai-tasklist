@@ -9,6 +9,11 @@
         <tr>
             <th>id</th>
             <td>{{ $task->id }}</td>
+        </tr>php artisan serve --host=$IP --port=$PORT
+
+        <tr>
+            <th>status</th>
+            <td>{{ $task->status }}</td>
         </tr>
         <tr>
             <th>タスク</th>
