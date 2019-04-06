@@ -1,3 +1,5 @@
+@if (Auth::check())
+
 <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a class="navbar-brand" href="/">Tasklist</a>
@@ -9,7 +11,17 @@
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
-                <li class="nav-item">{!! link_to_route('tasks.create', '新規メッセージの投稿', [], ['class' => 'nav-link']) !!}</li>
+                
+                <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="dropdown-divider"></li>
+                            <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
+                        </ul>
+                </li>
+                @else
+                  @include('commons.lognavbar')
+                @endif
             </ul>
         </div>
     </nav>

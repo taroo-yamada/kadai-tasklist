@@ -10,13 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => ['auth']], function () {
-Route::get('/tasks/index', 'TasksController@index');
-Route::resource('tasks', 'TasksController');
-});
+Route::get('/', 'TasksController@index');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['auth']], function () {
+Route::resource('tasks', 'TasksController');
 });
 
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
